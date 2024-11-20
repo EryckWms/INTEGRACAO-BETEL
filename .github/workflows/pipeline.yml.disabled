@@ -1,0 +1,69 @@
+name: pipeline_integracao_omie
+
+on:
+  push:
+    branches:
+
+
+env:
+  IMAGE_NAME: 'wmsexpert-omie'
+  ENVIRONMENT: 'prod'
+  REGISTRY: 'ghcr.io'
+  REGISTRY_USER:  'tiagoarywms'  # 'github.actor' ao invés de 'secrets.github.actor'
+  REGISTRY_PASS: ${{ secrets.GH_TOKEN }}
+  API_URL: ${{secrets.WMS_API_URL}}
+  API_LOGIN: ${{secrets.WMS_API_LOGIN}}
+  API_PASSWORD: ${{secrets.WMS_API_PASSWORD}}
+  API_FILIAL: ${{secrets.WMS_API_FILIAL}}
+  OMIE_KEY: ${{secrets.CLIENTE_OMIE_KEY}}
+  OMIE_SECRET: ${{secrets.CLIENTE_OMIE_SECRET}}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.5
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: 17.0.7
+          distribution: 'adopt'
+
+      - name: Extract Maven project version
+        run: echo "version=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
+        id: project
+
+      - name: Build project with Maven
+        run: |
+          
+          mvn -B package -DskipTests --file pom.xml
+
+      - name: Docker Login
+        uses: docker/login-action@v3.1.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: 'tiagoAryWMS'
+          password: ${{ env.REGISTRY_PASS }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5.3.0
+        env:
+          VERSION: ${{ steps.project.outputs.version }}
+        with:
+          context: .
+          push: true
+          no-cache: true
+          build-args: |
+            API_URL=${{env.API_URL}}
+            API_LOGIN=${{env.API_LOGIN}}
+            API_PASSWORD=${{env.API_PASSWORD}}
+            API_FILIAL=${{env.API_FILIAL}}
+            OMIE_KEY=${{env.OMIE_KEY}}
+            OMIE_SECRET=${{env.OMIE_SECRET}}
+          tags: |
+            ${{env.REGISTRY}}/${{env.REGISTRY_USER}}/${{ env.IMAGE_NAME }}:${{env.VERSION}}
+            ${{env.REGISTRY}}/${{env.REGISTRY_USER}}/${{ env.IMAGE_NAME }}:latest

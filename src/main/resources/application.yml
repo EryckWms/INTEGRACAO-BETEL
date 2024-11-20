@@ -1,0 +1,39 @@
+server:
+  port:
+    9597
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: integracao-omie
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
+  output:
+    ansi:
+      enabled: ALWAYS
+  main:
+    allow-circular-references: true
+  data:
+    jpa:
+      repositories:
+        enabled: false
+
+logging:
+  pattern:
+    console: '%green(%d{dd/MM/yyyy HH:mm:ss.SSS}) %boldMagenta([%thread]) %highlight(%-5level)- %clr(${PID:-}) : %cyan(%-40.40logger{39}) : %yellow(%msg%n)'
+
+wms:
+  api: a
+  login: a
+  senha: a
+  idfilial: 1
+
+
+feign:
+  okhttp:
+    enabled: true

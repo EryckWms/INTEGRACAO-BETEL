@@ -1,0 +1,40 @@
+server:
+  port:
+    9597
+  servlet:
+    context-path: /api
+
+spring:
+
+  application:
+    name: integracao-omie
+
+  output:
+    ansi:
+      enabled: ALWAYS
+  main:
+    allow-circular-references: true
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.Oracle12cDialect
+
+logging:
+  pattern:
+    console: '%green(%d{dd/MM/yyyy HH:mm:ss.SSS}) %boldMagenta([%thread]) %highlight(%-5level)- %clr(${PID:-}) : %cyan(%-40.40logger{39}) : %yellow(%msg%n)'
+
+wms:
+  api: a
+  login: a
+  senha: a
+  codfilial: a
+  hashtoken: A
+
+feign:
+  okhttp:
+    enabled: true
