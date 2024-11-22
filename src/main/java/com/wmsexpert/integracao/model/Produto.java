@@ -3,7 +3,7 @@ package com.wmsexpert.integracao.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "expert_produto")
+@Table(name = "expert_produto", schema = "wmsexpert")
 public class Produto {
 
     @Id

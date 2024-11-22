@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface PedidoItemRepository extends JpaRepository<PedidoItem, Integer> {
 
-    @Query(value = "SELECT * FROM EXPERT_PEDIDOSITEM ep WHERE CODIGOPEDIDO=:codigopedido", nativeQuery = true)
+    @Query(value = "SELECT * FROM wmsexpert.EXPERT_PEDIDOSITEM ep WHERE CODIGOPEDIDO=:codigopedido", nativeQuery = true)
     List<PedidoItem> buscarPorCodPedido(String codigopedido);
 
 }

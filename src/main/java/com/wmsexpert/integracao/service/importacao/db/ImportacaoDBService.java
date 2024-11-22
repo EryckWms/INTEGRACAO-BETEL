@@ -106,7 +106,7 @@ public class ImportacaoDBService extends AuthUtil {
         dtoFornecedor.setCodigo(fornecedorVw.getCodigo());
         dtoFornecedor.setNome(fornecedorVw.getNome());
         dtoFornecedor.setNomefantasia(fornecedorVw.getNomefantasia());
-        dtoFornecedor.setCpf(fornecedorVw.getCpf().replace(".", "").replace("/", "").replace("-", ""));
+        dtoFornecedor.setCpf(fornecedorVw.getCpf());
         dtoFornecedor.setIe(fornecedorVw.getIe());
         dtoFornecedor.setEstado(fornecedorVw.getEstado());
         dtoFornecedor.setCodcidade(String.valueOf(fornecedorVw.getCodcidade()).replace("(", "").replace(")", "").replace(" ", "").replace("-", ""));
@@ -136,11 +136,11 @@ public class ImportacaoDBService extends AuthUtil {
         dtoCliente.setNumero(String.valueOf(clienteVw.getNumero()));
         dtoCliente.setBairro(clienteVw.getBairro());
         dtoCliente.setCep(clienteVw.getCep());
-        dtoCliente.setTelefone(clienteVw.getTelefone().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""));
+        dtoCliente.setTelefone(clienteVw.getTelefone());
         dtoCliente.setEmail(clienteVw.getEmail());
         dtoCliente.setAtivo(clienteVw.getAtivo());
         dtoCliente.setLatitude(clienteVw.getLatitude());
-        dtoCliente.setLongetude(clienteVw.getLongetude());
+        dtoCliente.setLongetude(clienteVw.getLongitude());
     }
 
 }

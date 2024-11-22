@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "expert_cliente")
+@Table(name = "expert_cliente", schema = "wmsexpert")
 public class Cliente {
 
     @Id
@@ -25,7 +25,7 @@ public class Cliente {
     @Column(columnDefinition = "INTEGER")
     private Boolean ativo;
     private String latitude;
-    private String longetude;
+    private String longitude;
     private Integer shelflife;
     private Integer codrota;
     private String nomerota;
@@ -48,7 +48,7 @@ public class Cliente {
         this.email = email;
         this.ativo = ativo;
         this.latitude = latitude;
-        this.longetude = longetude;
+        this.longitude = longetude;
         this.shelflife = shelflife;
         this.codrota = codrota;
         this.nomerota = nomerota;
@@ -166,12 +166,12 @@ public class Cliente {
         this.latitude = latitude;
     }
 
-    public String getLongetude() {
-        return longetude;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setLongetude(String longetude) {
-        this.longetude = longetude;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public Integer getShelflife() {

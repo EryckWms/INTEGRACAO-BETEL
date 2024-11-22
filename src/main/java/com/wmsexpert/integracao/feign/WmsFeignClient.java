@@ -24,31 +24,31 @@ public interface WmsFeignClient {
 
     //VALIDAR DADOS POR CODIGO
 
-    @GetMapping("/integracao/validar/{tipo}/{codigo}")
+    @GetMapping("/validar/{tipo}/{codigo}")
     ResponseEntity<IntegracaoDadoResponseDTO> validarDados(@RequestHeader("Authorization") String token, @PathVariable("tipo") String tipo ,@PathVariable("codigo") String codigoCarga, @RequestParam("codfilial") String codfilial);
 
     //CONTRUIR CHAMADA DE END POINT REFERENTE AO ENTRADA
 
-    @PostMapping("/integracao/nota")
+    @PostMapping("/nota")
     ResponseEntity<String> cadastrarEntrada(@RequestHeader("Authorization") String token, @RequestBody NotaIntegraExternoRequestDTO dto);
 
     //CONTRUIR CHAMADA DE END POINT REFERENTE A CARGAS
 
-    @PostMapping("/integracao/nota/carga")
+    @PostMapping("/nota/carga")
     ResponseEntity<String> cadastrarCarga(@RequestHeader("Authorization") String token, @RequestBody CargaIntegraExternoRequestDTO dto);
 
     //CONTRUIR CHAMADA DE END POINT REFERENTE AO PEDIDO
 
-    @PostMapping("/integracao/pedido")
+    @PostMapping("/pedido")
     ResponseEntity<String> cadastrarSaida(@RequestHeader("Authorization") String token, @RequestBody PedidoIntegraExternoRequestDTO dto);
 
     //CONTRUIR CHAMADA DE END POINT REFERENTE A CARGAS
 
-    @PostMapping("/integracao/pedido/carregamento")
+    @PostMapping("/pedido/carregamento")
     ResponseEntity<String> cadastrarCarregamento(@RequestHeader("Authorization") String token, @RequestBody CarregamentoIntegraExternoRequestDTO dto);
 
     //EXCLUSIVOS DO INTEGRA
-    @PutMapping("/integracao/relacionar/carregamento")
+    @PutMapping("/relacionar/carregamento")
     ResponseEntity<Void> relacionarCarregametnoPedido(@RequestHeader("Authorization") String token, @RequestParam("codcarregamento") String codcarregamento, @RequestParam("codpedido") String codpedido, @RequestParam("codfilial") String codfilial);
 
 }

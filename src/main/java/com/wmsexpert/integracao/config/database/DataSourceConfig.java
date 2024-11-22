@@ -32,7 +32,7 @@ public class DataSourceConfig {
         dataSourceBuilder.driverClassName(br.readLine().replace("driveclass : ", ""));
         dataSourceBuilder.url(br.readLine().replace("url : ", ""));
         dataSourceBuilder.username(br.readLine().replace("username : ", ""));
-        dataSourceBuilder.password(br.readLine().replace("password   : ", ""));
+        dataSourceBuilder.password(br.readLine().replace("password : ", ""));
         return dataSourceBuilder.build();
     }
 
@@ -62,7 +62,7 @@ public class DataSourceConfig {
 
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", "none");
-        properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle12cDialect");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         em.setJpaPropertyMap(properties);
 
         return em;

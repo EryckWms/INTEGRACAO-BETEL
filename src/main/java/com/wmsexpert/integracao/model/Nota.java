@@ -6,11 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "expert_nota")
+@Table(name = "expert_nota", schema = "wmsexpert")
 public class Nota {
 
     @Id
-    private Long id;
+    private String id;
     private String codigo;
     private String codfilial;
     private Integer tipo;
@@ -31,7 +31,7 @@ public class Nota {
     public Nota() {
     }
 
-    public Nota(Long id, String codigo, String codfilial, Integer tipo, String carga, LocalDate dataemissao, Double quantidade, String numeronotafiscal, String serie, Integer quantidadevolume, Double valtotalproduto, Double valtotalnota, Double pesobruto, Double pesoliquido, Integer situacao, Double qtdvolumeconf, String codigofornecedor) {
+    public Nota(String id, String codigo, String codfilial, Integer tipo, String carga, LocalDate dataemissao, Double quantidade, String numeronotafiscal, String serie, Integer quantidadevolume, Double valtotalproduto, Double valtotalnota, Double pesobruto, Double pesoliquido, Integer situacao, Double qtdvolumeconf, String codigofornecedor) {
         this.id = id;
         this.codigo = codigo;
         this.codfilial = codfilial;
@@ -51,11 +51,11 @@ public class Nota {
         this.codigofornecedor = codigofornecedor;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

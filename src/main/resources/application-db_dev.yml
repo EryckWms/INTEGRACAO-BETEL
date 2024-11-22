@@ -29,11 +29,11 @@ logging:
     console: '%green(%d{dd/MM/yyyy HH:mm:ss.SSS}) %boldMagenta([%thread]) %highlight(%-5level)- %clr(${PID:-}) : %cyan(%-40.40logger{39}) : %yellow(%msg%n)'
 
 wms:
-  api: a
-  login: a
-  senha: a
-  codfilial: a
-  hashtoken: A
+  api: https://api-integracao.wmsexpert.com.br/api
+  login: adm@betel.com.br
+  senha: Adm@1100
+  codfilial: '01'
+  hashtoken: O7nkELHa7xQlautVSLjwPsRctmJiQpaVaex71j1QnkWccm/IzXvPZRselDkG
 
 feign:
   okhttp:

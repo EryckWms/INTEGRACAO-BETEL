@@ -61,13 +61,13 @@ public class IntegracaoDbController {
     @Async
     @Scheduled(initialDelay = 1, fixedDelay = 5, timeUnit = TimeUnit.MINUTES)
     public void agendadorPedidoImporta(){
-
+        pedidoImportaDBService.importarPedido();
     }
 
     @Async
     @Scheduled(initialDelay = 1, fixedDelay = 5, timeUnit = TimeUnit.MINUTES)
     public void agendadorNotaImporta(){
-
+        notaImportaDBService.importarNota();
     }
 
     @Async
